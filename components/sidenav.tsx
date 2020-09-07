@@ -1,9 +1,9 @@
 import Link from 'next/link'
 import { NavProps } from '../types/interfaces'
 
-const Nav = ({ links }: NavProps) => {
+const Sidenav = ({ links }: NavProps) => {
     return (
-        <nav className="hidden sm:flex justify-center m-8">
+        <nav className="sm:hidden justify-center m-8">
             <ul className="flex">
                 {links.map((link) => (
                     <li 
@@ -20,4 +20,4 @@ const Nav = ({ links }: NavProps) => {
     )
 };
 
-export default Nav
+export default Sidenav

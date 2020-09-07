@@ -1,6 +1,6 @@
 import Head from 'next/Head'
 import { ReactNode } from 'react'
-import Nav from '../components/nav'
+import Header from '../components/header'
 
 
 interface Props {
@@ -14,7 +14,7 @@ const Layout = ({ children }: Props) => {
                 <title>Tracker</title>
                 <link rel="icon" href="/favicon.ico" />
             </Head>
-            <Nav />
+            <Header />
             {children}
         </div>
     )
