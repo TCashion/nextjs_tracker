@@ -20,4 +20,4 @@ const Nav = ({ links }: NavProps) => {
     )
 };
 
-export default Nav
+export default Nav;

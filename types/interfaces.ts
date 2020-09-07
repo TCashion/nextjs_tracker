@@ -4,5 +4,6 @@ export interface NavLink {
 }
 
 export interface NavProps {
-    links: NavLink[]
+    links: NavLink[],
+    visible?: boolean
 }

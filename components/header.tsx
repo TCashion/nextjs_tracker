@@ -1,4 +1,6 @@
+import { useState } from 'react'
 import Nav from './nav'
+import Sidenav from './sidenav'
 import { NavLink } from '../types/interfaces'
 
 const links: NavLink[] = [
@@ -8,8 +10,10 @@ const links: NavLink[] = [
 
 const Header = () => {
 
+    const [sidenavVisible, setSidenavVisible] = useState(false);
+
     const handleClick = () => {
-        console.log('click');
+        setSidenavVisible(!sidenavVisible);
     };
 
     return (
@@ -24,8 +28,12 @@ const Header = () => {
             >
                 menu
             </p>
+            <Sidenav 
+                links={links}
+                visible={sidenavVisible}
+            />
         </header>
     )
-}
+};
 
-export default Header
+export default Header;
