@@ -3,7 +3,7 @@ import Layout from '../components/layout'
 const About = () => {
     return (
         <Layout>
-            <div>
+            <div className="flex justify-center">
                 <h1>About</h1>
             </div>
         </Layout>

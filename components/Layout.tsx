@@ -1,5 +1,7 @@
-import Head from 'next/Head';
-import { ReactNode } from 'react';
+import Head from 'next/Head'
+import { ReactNode } from 'react'
+import Nav from '../components/nav'
+
 
 interface Props {
     children: ReactNode
@@ -12,7 +14,8 @@ const Layout = ({ children }: Props) => {
                 <title>Tracker</title>
                 <link rel="icon" href="/favicon.ico" />
             </Head>
-            { children }
+            <Nav />
+            {children}
         </div>
     )
 };
