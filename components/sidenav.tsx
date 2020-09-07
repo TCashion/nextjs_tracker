@@ -9,7 +9,7 @@ const Sidenav = ({ links, visible }: NavProps) => {
                 {links.map((link) => (
                     <li 
                         className="pr-8 pl-8"
-                        key={link.href}
+                        key={`nav-link-${link.href}-${link.label}`}
                     >
                         <Link href={link.href}>
                             <a>{link.label}</a>
