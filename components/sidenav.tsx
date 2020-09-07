@@ -4,7 +4,7 @@ import { NavProps } from '../types/interfaces'
 const Sidenav = ({ links, visible }: NavProps) => {
 
     return (
-        <nav className={`${visible ? 'block' : 'hidden'} justify-center p-8`}>
+        <nav className={`${visible ? 'block' : 'hidden'} justify-center p-8 bg-white h-full w-9/12 fixed top-0`}>
             <ul className="flex flex-col">
                 {links.map((link) => (
                     <li 

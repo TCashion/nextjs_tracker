@@ -17,7 +17,7 @@ const Header = () => {
     };
 
     return (
-        <header>
+        <header className="overflow-hidden">
             <Nav 
                 links={links}
             />
