@@ -1,14 +1,12 @@
-import ApolloClient, { NormalizedCacheObject } from 'apollo-boost';
 import Head from 'next/Head';
 import { ApolloProvider } from '@apollo/react-hooks';
 import fetch from 'isomorphic-unfetch';
-import { InMemoryCache } from 'apollo-cache-inmemory';
-// change to this later to resolve typescript error. 
-// import {
-//     ApolloClient,
-//     InMemoryCache,
-//     NormalizedCacheObject,
-// } from '@apollo/client'
+import {
+    ApolloClient,
+    InMemoryCache,
+    NormalizedCacheObject,
+    HttpLink,
+} from '@apollo/client'
 
 export function withApollo (PageComponent: any) {
     const WithApollo = ({ apolloClient, apolloState, ...pageProps }: any) => {
@@ -73,16 +71,18 @@ export function withApollo (PageComponent: any) {
     return WithApollo;
 };
 
-const initApolloClient = (initialState = {}) => {
-    const ssrMode = typeof window === 'undefined';
+const initApolloClient = (initialState: NormalizedCacheObject = {}) => {
+    const url = 'http://localhost:3000';
     const cache = new InMemoryCache().restore(initialState); 
-
-
+    const link = new HttpLink({
+        uri: `${url}/api/graphql`,
+        fetch
+    });
+    const ssrMode = typeof window === 'undefined';
     const client = new ApolloClient({
         ssrMode,
-        uri: 'http://localhost:3000/api/graphql',
-        fetch, 
+        link,
         cache,
     });
     return client;
-}
+};
