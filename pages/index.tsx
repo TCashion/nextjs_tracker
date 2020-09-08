@@ -38,12 +38,12 @@ const Home = () => {
           <h1 className={styles.title}>
             Habit Tracker
           </h1>
-          <div className="max-w-screen-sm">
+          <div className="max-w-screen-md">
             <HabitForm 
               setHabits={setHabits}
             />
           </div>
-          <div className="max-w-screen-sm">
+          <div className="max-w-screen-md">
             <HabitList 
               habits={habits}
             />
