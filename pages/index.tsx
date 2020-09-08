@@ -3,7 +3,8 @@ import Layout from '../components/layout'
 import { withApollo } from '../lib/apollo'
 import { useQuery } from '@apollo/react-hooks'
 import gql from 'graphql-tag'
-import HabitForm from '../components/habitForm'
+import HabitList from '../components/habitList';
+import HabitForm from '../components/habitForm';
 
 const HELLO_QUERY = gql`
   query HelloQuery {
@@ -36,6 +37,7 @@ const Home = () => {
             Habit Tracker
           </h1>
           <HabitForm />
+          <HabitList />
         </main>
 
         <footer className={styles.footer}>
