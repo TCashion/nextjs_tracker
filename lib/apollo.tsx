@@ -72,10 +72,10 @@ export function withApollo (PageComponent: any) {
 };
 
 const initApolloClient = (initialState: NormalizedCacheObject = {}) => {
-    const url = 'http://localhost:3000';
     const cache = new InMemoryCache().restore(initialState); 
     const link = new HttpLink({
-        uri: `${url}/api/graphql`,
+        // uri: 'http://localhost:3000/api/graphql', // for setup confirmation
+        uri: 'https://www.graphqlhub.com/graphql', // for testing third party APIs
         fetch
     });
     const ssrMode = typeof window === 'undefined';
