@@ -1,13 +1,19 @@
 import Habit from './habit'
 
-const HabitList = () => {
+interface Props {
+    habits: String[]
+}
+
+const HabitList = ({ habits }: Props) => {
     return (
         <section className="text-center">
             <h2>My Habits</h2>
-            <Habit />
-            <Habit />
-            <Habit />
-            <Habit />
+            {habits.map((habit, idx) => {
+                return <Habit 
+                    key={`${habit}-${idx}`} 
+                    habit={habit}
+                />
+            })}
         </section>
     )
 }

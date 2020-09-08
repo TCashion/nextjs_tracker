@@ -1,6 +1,10 @@
-import { useState, ChangeEvent, MouseEvent, FormEvent } from 'react';
+import { useState, ChangeEvent, MouseEvent, FormEvent, Dispatch, SetStateAction } from 'react';
 
-const HabitForm = () => {
+interface Props {
+    setHabits: Dispatch<SetStateAction<string[]>>
+}
+
+const HabitForm = ({ setHabits }: Props) => {
     const [formData, setFormData] = useState({ habit: '' });
     
     const handleCancel = (e: MouseEvent<HTMLButtonElement>): void => {
@@ -19,7 +23,7 @@ const HabitForm = () => {
 
     const handleSubmit = (e: FormEvent<HTMLFormElement>): void => {
         e.preventDefault(); 
-        console.log(formData)
+        setHabits(prevState => [...prevState, formData.habit]);
     };
 
     return (

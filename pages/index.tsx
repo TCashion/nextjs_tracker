@@ -1,10 +1,11 @@
+import { useState } from 'react'
 import styles from '../styles/Home.module.css'
 import Layout from '../components/layout'
 import { withApollo } from '../lib/apollo'
 import { useQuery } from '@apollo/react-hooks'
 import gql from 'graphql-tag'
-import HabitList from '../components/habitList';
-import HabitForm from '../components/habitForm';
+import HabitList from '../components/habitList'
+import HabitForm from '../components/habitForm'
 
 const HELLO_QUERY = gql`
   query HelloQuery {
@@ -23,9 +24,10 @@ const REDDIT_QUERY = gql`
 `
 
 const Home = () => {
-  
   // const { data, loading, error } = useQuery(HELLO_QUERY);
   const { data, loading, error } = useQuery(REDDIT_QUERY);
+  const [habits, setHabits] = useState(['Make the bed.'])
+
   if (loading) return <div />;
 
   return (
@@ -36,8 +38,16 @@ const Home = () => {
           <h1 className={styles.title}>
             Habit Tracker
           </h1>
-          <HabitForm />
-          <HabitList />
+          <div className="max-w-screen-sm">
+            <HabitForm 
+              setHabits={setHabits}
+            />
+          </div>
+          <div className="max-w-screen-sm">
+            <HabitList 
+              habits={habits}
+            />
+          </div>
         </main>
 
         <footer className={styles.footer}>

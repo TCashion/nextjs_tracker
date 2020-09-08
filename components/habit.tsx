@@ -1,9 +1,13 @@
 import HabitButton from './habitButton'
 
-const Habit = () => {
+interface Props {
+    habit: String
+}
+
+const Habit = ({ habit }: Props) => {
     return (
         <article className="text-center">
-            <h3>Habit Title</h3>
+            <h3 className="font-semibold">{habit}</h3>
             <div>
                 <HabitButton />
                 <HabitButton />
