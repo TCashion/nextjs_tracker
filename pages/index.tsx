@@ -38,13 +38,14 @@ const Home = () => {
           <h1 className={styles.title}>
             Habit Tracker
           </h1>
+          <h3>STYLE JSX DEMONSTRATION</h3>
           <div className="max-w-screen-md">
-            <HabitForm 
+            <HabitForm
               setHabits={setHabits}
             />
           </div>
           <div className="max-w-screen-md">
-            <HabitList 
+            <HabitList
               habits={habits}
             />
           </div>
@@ -61,6 +62,11 @@ const Home = () => {
           </a>
         </footer>
       </div>
+      <style jsx>{`
+        h3 {
+            color: red;
+        }
+      `}</style>
     </Layout>
   )
 }
