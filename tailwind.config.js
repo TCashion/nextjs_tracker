@@ -8,6 +8,9 @@ module.exports = {
       colors: {
         'accent-1': '#333',
       },
+      boxShadow: {
+        card: '2px 2px 20px rgba(0,0,0,0.1)'
+      }
     },
   },
   variants: {},

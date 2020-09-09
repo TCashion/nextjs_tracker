@@ -28,7 +28,7 @@ const Home = () => {
   const { data, loading, error } = useQuery(REDDIT_QUERY);
   const [habits, setHabits] = useState(['Make the bed.'])
 
-  if (loading) return <div />;
+  // if (loading) return <div />;
 
   return (
     <Layout>

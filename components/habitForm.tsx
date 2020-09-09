@@ -31,6 +31,7 @@ const HabitForm = ({ setHabits }: Props) => {
             className="w-full max-w-sm my-8"
             onSubmit={handleSubmit}
         >
+            <h3>STYLE JSX DEMONSTRATION</h3>
             <div className="md:flex md:items-center mb-6">
                 <div className="w-full">
                     <label htmlFor="habit" className="block text-gray-500 font-bold mb-1 md:mb-0 pr-4">Habit:</label>
@@ -59,6 +60,11 @@ const HabitForm = ({ setHabits }: Props) => {
                     >Cancel</button>
                 </div>
             </div>
+            <style jsx>{`
+                h3 {
+                    color: red;
+                }
+            `}</style>
         </form>
     )
 }
