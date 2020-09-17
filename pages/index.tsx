@@ -28,7 +28,7 @@ const Home = () => {
   const { data, loading, error } = useQuery(REDDIT_QUERY);
   const [habits, setHabits] = useState(['Make the bed.'])
 
-  // if (loading) return <div />;
+  if (loading) return <div />;
 
   return (
     <Layout>
@@ -38,6 +38,7 @@ const Home = () => {
           <h1 className={styles.title}>
             Habit Tracker
           </h1>
+          <h2>GraphQL demo: {data.reddit.subreddit.subscribers}</h2>
           <h3>STYLE JSX DEMONSTRATION</h3>
           <div className="max-w-screen-md">
             <HabitForm
