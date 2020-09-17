@@ -24,11 +24,9 @@ const REDDIT_QUERY = gql`
 `
 
 const Home = () => {
-  // const { data, loading, error } = useQuery(HELLO_QUERY);
-  const { data, loading, error } = useQuery(REDDIT_QUERY);
-  const [habits, setHabits] = useState(['Make the bed.'])
-
-  if (loading) return <div />;
+  const { data, loading, error } = useQuery(HELLO_QUERY);
+  // const { data, loading, error } = useQuery(REDDIT_QUERY);
+  const [habits, setHabits] = useState(['Make the bed.']);
 
   return (
     <Layout>
@@ -38,7 +36,8 @@ const Home = () => {
           <h1 className={styles.title}>
             Habit Tracker
           </h1>
-          <h2>GraphQL demo: {data.reddit.subreddit.subscribers}</h2>
+          <h2>GraphQL demo: {loading ? 'Loading...' : data.sayHello }</h2>
+          {/* <h2>GraphQL demo: {loading ? 'Loading...' : data.reddit.subreddit.subscribers}</h2> */}
           <h3>STYLE JSX DEMONSTRATION</h3>
           <div className="max-w-screen-md">
             <HabitForm
