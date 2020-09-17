@@ -1,32 +1,10 @@
 import { useState } from 'react'
 import styles from '../styles/Home.module.css'
 import Layout from '../components/layout'
-import { withApollo } from '../lib/apollo'
-import { useQuery } from '@apollo/react-hooks'
-import gql from 'graphql-tag'
 import HabitList from '../components/habitList'
 import HabitForm from '../components/habitForm'
-import Card from '../components/card'
-
-const HELLO_QUERY = gql`
-  query HelloQuery {
-    sayHello
-  }
-`
-
-const REDDIT_QUERY = gql`
-  query NextJSReddit {
-    reddit {
-      subreddit(name: "nextjs") {
-        subscribers
-      }
-    }
-  }
-`
 
 const Home = () => {
-  const { data, loading, error } = useQuery(HELLO_QUERY);
-  // const { data, loading, error } = useQuery(REDDIT_QUERY);
   const [habits, setHabits] = useState(['Make the bed.']);
 
   return (
@@ -37,11 +15,6 @@ const Home = () => {
           <h1 className={styles.title}>
             Habit Tracker
           </h1>
-          <Card title='NextJS specific demonstrations: '>
-            <h2>GraphQL demo: {loading ? 'Loading...' : data.sayHello }</h2>
-            {/* <h2>GraphQL demo: {loading ? 'Loading...' : data.reddit.subreddit.subscribers}</h2> */}
-            <h3>STYLE JSX DEMONSTRATION</h3>
-          </Card>
           <div className="max-w-screen-md">
             <HabitForm
               setHabits={setHabits}
@@ -65,13 +38,8 @@ const Home = () => {
           </a>
         </footer>
       </div>
-      <style jsx>{`
-        h3 {
-            color: red;
-        }
-      `}</style>
     </Layout>
   )
 }
 
-export default withApollo(Home)
+export default Home;
