@@ -1,13 +1,8 @@
 import Head from 'next/Head'
-import { ReactNode } from 'react'
 import Header from '../components/header'
+import { ChildrenProps } from '../types/interfaces';
 
-
-interface Props {
-    children: ReactNode
-};
-
-const Layout = ({ children }: Props) => {
+const Layout = ({ children }: ChildrenProps) => {
     return (
         <div>
             <Head>

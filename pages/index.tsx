@@ -6,6 +6,7 @@ import { useQuery } from '@apollo/react-hooks'
 import gql from 'graphql-tag'
 import HabitList from '../components/habitList'
 import HabitForm from '../components/habitForm'
+import Card from '../components/card'
 
 const HELLO_QUERY = gql`
   query HelloQuery {
@@ -36,9 +37,11 @@ const Home = () => {
           <h1 className={styles.title}>
             Habit Tracker
           </h1>
-          <h2>GraphQL demo: {loading ? 'Loading...' : data.sayHello }</h2>
-          {/* <h2>GraphQL demo: {loading ? 'Loading...' : data.reddit.subreddit.subscribers}</h2> */}
-          <h3>STYLE JSX DEMONSTRATION</h3>
+          <Card title='NextJS specific demonstrations: '>
+            <h2>GraphQL demo: {loading ? 'Loading...' : data.sayHello }</h2>
+            {/* <h2>GraphQL demo: {loading ? 'Loading...' : data.reddit.subreddit.subscribers}</h2> */}
+            <h3>STYLE JSX DEMONSTRATION</h3>
+          </Card>
           <div className="max-w-screen-md">
             <HabitForm
               setHabits={setHabits}
