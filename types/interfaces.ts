@@ -14,3 +14,8 @@ export interface ChildrenProps {
     children: ReactNode,
     title?: String
 };
+
+export interface Habit {
+    _id: String,
+    name: String
+}

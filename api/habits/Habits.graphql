@@ -1,0 +1,23 @@
+# API type definitions
+# type defines the shape of the data that is available to the API
+# doesn't necessarily need to be exact match to model / data in DB
+# i.e. data that comes from the API
+type Habit {
+    _id: ID!,
+    name: String!
+}
+
+# defines what comes into the API
+input HabitInput {
+    _id: ID
+    name: String!
+}
+
+# define what we can change
+type Mutation {
+    addHabit(habit: HabitInput): Habit
+}
+
+type Query {
+    habits: [Habit]
+}
