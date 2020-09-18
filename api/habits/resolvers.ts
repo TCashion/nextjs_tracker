@@ -1,7 +1,7 @@
 // where we ask for data, this is what tells us what data to give back
 // like a GET request
 
-import { Habit } from '../../types/interfaces';
+import { Habit } from '../../@types/interfaces';
 
 export const habitResolvers = {
     Query: {

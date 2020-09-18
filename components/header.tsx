@@ -2,7 +2,7 @@ import { useState } from 'react'
 import Nav from './nav'
 import Sidenav from './sidenav'
 import Overlay from './overlay'
-import { NavLink } from '../types/interfaces'
+import { NavLink } from '../@types/interfaces'
 
 const links: NavLink[] = [
     { label: 'Home', href: '/' },

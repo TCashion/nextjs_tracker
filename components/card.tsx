@@ -1,4 +1,4 @@
-import { ChildrenProps } from '../types/interfaces';
+import { ChildrenProps } from '../@types/interfaces';
 
 const Card = ({ children, title }: ChildrenProps) => {
     return (

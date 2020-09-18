@@ -16,12 +16,16 @@
     "moduleResolution": "node",
     "resolveJsonModule": true,
     "isolatedModules": true,
-    "jsx": "preserve"
+    "jsx": "preserve",
+    "typeRoots": ["node_modules/@types", "./@types"]
   },
+  "files": ["./@types/graphql.d.ts"],
   "include": [
     "next-env.d.ts",
     "**/*.ts",
-    "**/*.tsx", "pages/_app.js", "lib/mongoose.ts"
+    "**/*.tsx", 
+    "pages/_app.js", 
+    "lib/mongoose.ts"
   ],
   "exclude": [
     "node_modules"

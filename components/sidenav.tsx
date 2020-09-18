@@ -1,5 +1,5 @@
 import Link from 'next/link'
-import { NavProps } from '../types/interfaces'
+import { NavProps } from '../@types/interfaces'
 
 const Sidenav = ({ links, visible }: NavProps) => {
 
