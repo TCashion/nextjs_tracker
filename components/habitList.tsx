@@ -1,7 +1,10 @@
 import Habit from './habit'
 
 interface Props {
-    habits: String[]
+    habits: [{
+        _id: string,
+        name: string
+    }]
 }
 
 const HabitList = ({ habits }: Props) => {
@@ -10,8 +13,8 @@ const HabitList = ({ habits }: Props) => {
             <h2>My Habits</h2>
             {habits.map((habit, idx) => {
                 return <Habit 
-                    key={`${habit}-${idx}`} 
-                    habit={habit}
+                    key={`${habit.name}-${idx}`} 
+                    habit={habit.name}
                 />
             })}
         </section>
