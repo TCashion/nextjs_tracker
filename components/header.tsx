@@ -6,6 +6,7 @@ import { NavLink } from '../@types/interfaces'
 
 const links: NavLink[] = [
     { label: 'Home', href: '/' },
+    { label: 'Habits', href: '/habits' },
     { label: 'About', href: '/about' },
 ]
 

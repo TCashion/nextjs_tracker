@@ -1,4 +1,5 @@
 import { useState, ChangeEvent, MouseEvent, FormEvent, Dispatch, SetStateAction } from 'react';
+import Button from './button';
 
 interface Props {
     setHabits: Dispatch<SetStateAction<string[]>>
@@ -46,17 +47,17 @@ const HabitForm = ({ setHabits }: Props) => {
             </div>
             <div className="md:flex md:items-center">
                 <div className="md:w-2/3">
-                    <button
-                        className="shadow bg-blue-500 hover:bg-blue-400 focus:shadow-outline focus:outline-none text-white font-bold py-2 px-4 rounded"
+                    <Button 
+                        innerText="Submit"
                         type="submit"
-                    >Submit</button>
+                    />
                 </div>
                 <div className="md:w-2/3">
-                    <button
-                        className="shadow bg-blue-500 hover:bg-blue-400 focus:shadow-outline focus:outline-none text-white font-bold py-2 px-4 rounded"
+                    <Button
+                        innerText="Cancel"
                         type="button"
                         onClick={handleCancel}
-                    >Cancel</button>
+                    />
                 </div>
             </div>
         </form>

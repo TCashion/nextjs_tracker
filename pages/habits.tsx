@@ -1,9 +1,11 @@
-import Link from 'next/link'
+import { useState } from 'react'
 import styles from '../styles/Home.module.css'
 import Layout from '../components/layout'
-import { btnDefaultStyle } from '../components/button'
+import HabitList from '../components/habitList'
+import HabitForm from '../components/habitForm'
 
-const Home = () => {
+const Habits = () => {
+  const [habits, setHabits] = useState(['Make the bed.']);
 
   return (
     <Layout>
@@ -13,19 +15,15 @@ const Home = () => {
           <h1 className={styles.title}>
             Habit Tracker
           </h1>
-          <p>Welcome to the Habit Tracker!</p>
-          <br></br>
-          <div className="flex-row">
-            <Link 
-              href="/habits"
-            >
-              <a 
-                className={ btnDefaultStyle }
-              >Click here</a>
-            </Link>
-            <span
-              className="mx-2"
-            >to proceed to the tracker.</span>
+          <div className="max-w-screen-md">
+            <HabitForm
+              setHabits={setHabits}
+            />
+          </div>
+          <div className="max-w-screen-md">
+            <HabitList
+              habits={habits}
+            />
           </div>
         </main>
 
@@ -44,4 +42,4 @@ const Home = () => {
   )
 }
 
-export default Home;
+export default Habits;

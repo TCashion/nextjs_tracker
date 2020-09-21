@@ -1,6 +1,6 @@
-import Layout from '../components/layout';
-import Card from '../components/card';
-import gql from 'graphql-tag';
+import Layout from '../components/layout'
+import Card from '../components/card'
+import gql from 'graphql-tag'
 import { withApollo } from '../lib/apollo'
 import { useQuery } from '@apollo/react-hooks'
 
