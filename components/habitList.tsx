@@ -1,4 +1,4 @@
-import Habit from './habit'
+import HabitCard from './habitCard'
 import { IHabit } from '../@types/interfaces'
 
 interface Props {
@@ -10,7 +10,7 @@ const HabitList = ({ habits }: Props) => {
         <section className="text-center w-full">
             <h2>My Habits</h2>
             {habits.map((habit) => {
-                return <Habit 
+                return <HabitCard
                     key={`${habit._id}`} 
                     habit={habit.name}
                 />

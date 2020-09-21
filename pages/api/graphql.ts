@@ -1,9 +1,9 @@
-import { ApolloServer, gql } from 'apollo-server-micro';
-import { mergeResolvers, mergeTypeDefs } from 'graphql-tools';
-import connectDb from '../../lib/mongoose';
-import { habitResolvers } from '../../api/habits/resolvers';
-import { habitMutations } from '../../api/habits/mutations';
-import Habits from '../../api/habits/Habits.graphql';
+import { ApolloServer, gql } from 'apollo-server-micro'
+import { mergeResolvers, mergeTypeDefs } from 'graphql-tools'
+import connectDb from '../../lib/mongoose'
+import { habitResolvers } from '../../api/habits/resolvers'
+import { habitMutations } from '../../api/habits/mutations'
+import Habit from '../../api/habits/Habits.graphql'
 
 const testTypeDefs = gql`
     type Query {
@@ -27,7 +27,7 @@ const resolvers = mergeResolvers([
 
 const typeDefs = mergeTypeDefs([
     testTypeDefs,
-    Habits
+    Habit
 ]);
 
 const apolloServer = new ApolloServer({ typeDefs, resolvers });

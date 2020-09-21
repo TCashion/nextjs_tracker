@@ -1,11 +1,11 @@
 import HabitButton from './habitButton';
-import Card from '../components/card';
+import Card from './card';
 
 interface Props {
-    habit: String
+    habit: string
 }
 
-const Habit = ({ habit }: Props) => {
+const HabitCard = ({ habit }: Props) => {
     const dates = getLastSevenDays();
     return (
         <Card title={habit}>
@@ -32,4 +32,4 @@ const getLastSevenDays = () => {
     return dates; 
 }
 
-export default Habit;
+export default HabitCard;

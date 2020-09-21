@@ -8,10 +8,9 @@ export const habitMutations = {
     Mutation: {
         async addHabit(_: any, { habit }: AddHabitParams) {
             try { 
-                const newHabit = {...habit};
-                // await Habit.create({
-                //     ...habit
-                // });
+                const newHabit = await Habit.create({
+                    ...habit
+                });
                 return newHabit;
             } catch (err) {
                 console.log(err);
