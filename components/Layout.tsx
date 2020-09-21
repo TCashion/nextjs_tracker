@@ -1,6 +1,6 @@
 import Head from 'next/Head'
 import Header from '../components/header'
-import { ChildrenProps } from '../@types/interfaces';
+import { ChildrenProps } from '../@types/interfaces'
 
 const Layout = ({ children }: ChildrenProps) => {
     return (

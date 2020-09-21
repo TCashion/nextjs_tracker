@@ -1,13 +1,13 @@
 // database collection
 // i.e. models
+const mongoose = require('mongoose');
 
-import mongoose, { Schema } from 'mongoose';
-
-export const HabitSchema = new Schema({
+export const habitSchema = new mongoose.Schema({
     name: {
         type: String, 
         required: true
     }
 });
 
-export default mongoose.models.habit || mongoose.model('Habit', HabitSchema);
+export default mongoose.model('Habit', habitSchema);
+// module.exports = mongoose.model('Habit', habitSchema);

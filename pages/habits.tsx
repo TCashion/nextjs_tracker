@@ -7,8 +7,8 @@ import gql from 'graphql-tag'
 import { withApollo } from '../lib/apollo'
 import { useQuery } from '@apollo/react-hooks'
 
-const HABIT_QUERY = gql`
-    query HabitQuery {
+const GET_HABITS = gql`
+    query getHabits {
         habits {
             _id,
             name
@@ -18,7 +18,7 @@ const HABIT_QUERY = gql`
 
 const Habits = () => {
     const [habits, setHabits] = useState(['']);
-    const { data, loading, error } = useQuery(HABIT_QUERY, {
+    const { data, loading, error } = useQuery(GET_HABITS, {
         onCompleted: () => {
             if (data && data.habits) {
                 setHabits(data.habits)
@@ -33,9 +33,7 @@ const Habits = () => {
                 <main className={styles.main}>
                     <h1 className={styles.title}>Habit Tracker</h1>
                     <div className="max-w-screen-md">
-                        <HabitForm
-                            setHabits={setHabits}
-                        />
+                        <HabitForm />
                     </div>
                     <div className="max-w-screen-md">
                         {loading ?

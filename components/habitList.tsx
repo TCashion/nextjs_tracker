@@ -1,19 +1,17 @@
 import Habit from './habit'
+import { IHabit } from '../@types/interfaces'
 
 interface Props {
-    habits: [{
-        _id: string,
-        name: string
-    }]
+    habits: IHabit[]
 }
 
 const HabitList = ({ habits }: Props) => {
     return (
         <section className="text-center w-full">
             <h2>My Habits</h2>
-            {habits.map((habit, idx) => {
+            {habits.map((habit) => {
                 return <Habit 
-                    key={`${habit.name}-${idx}`} 
+                    key={`${habit._id}`} 
                     habit={habit.name}
                 />
             })}

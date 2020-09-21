@@ -1,12 +1,25 @@
-import { useState, ChangeEvent, MouseEvent, FormEvent, Dispatch, SetStateAction } from 'react';
-import Button from './button';
+import { useState, ChangeEvent, MouseEvent, FormEvent, Dispatch, SetStateAction } from 'react'
+import { useMutation } from '@apollo/react-hooks'
+import gql from 'graphql-tag'
+import Button from './button'
 
 interface Props {
     setHabits: Dispatch<SetStateAction<string[]>>
 }
 
-const HabitForm = ({ setHabits }: Props) => {
+const ADD_HABIT = gql`
+    mutation addHabit($habit: HabitInput) {
+        addHabit(habit: $habit) {
+            _id
+            name
+        }
+    }
+`
+
+const HabitForm = () => {
     const [formData, setFormData] = useState({ habit: '' });
+
+    const [addHabit] = useMutation(ADD_HABIT);
     
     const handleCancel = (e: MouseEvent<HTMLButtonElement>): void => {
         e.preventDefault(); 
@@ -24,7 +37,13 @@ const HabitForm = ({ setHabits }: Props) => {
 
     const handleSubmit = (e: FormEvent<HTMLFormElement>): void => {
         e.preventDefault(); 
-        setHabits(prevState => [...prevState, formData.habit]);
+        addHabit({
+            variables: { 
+                 habit: {
+                     name: formData.habit
+                 } 
+            } 
+        });
     };
 
     return (

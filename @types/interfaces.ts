@@ -12,10 +12,14 @@ export interface NavProps {
 
 export interface ChildrenProps {
     children: ReactNode,
-    title?: String
+    title?: string
 };
 
-export interface Habit {
-    _id: String,
-    name: String
+export interface IHabit {
+    _id: string,
+    name: string
+}
+
+export interface AddHabitParams {
+    habit: IHabit
 }

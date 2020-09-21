@@ -25,7 +25,7 @@
     "**/*.ts",
     "**/*.tsx", 
     "pages/_app.js", 
-    "lib/mongoose.ts"
+    "lib/mongoose.ts", "api/habits/mutations.js"
   ],
   "exclude": [
     "node_modules"
