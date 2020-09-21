@@ -1,12 +1,11 @@
-// database collection
-// i.e. models
-const mongoose = require('mongoose');
+// Database collection
+import mongoose, { Schema } from 'mongoose';
 
-const habitSchema = new mongoose.Schema({
+export const habitSchema = new Schema({
     name: {
-        type: String, 
+        type: String,
         required: true
     }
 });
 
-export default mongoose.models.habit || mongoose.model('Habit', habitSchema);
+export default mongoose.models.Habit || mongoose.model('Habit', habitSchema);

@@ -1,4 +1,4 @@
-import Habit from './habit'
+import HabitSchema from './habit'
 import { AddHabitParams } from '../../@types/interfaces'
 
 // graphQL mutations are where we "modify" things
@@ -8,7 +8,7 @@ export const habitMutations = {
     Mutation: {
         async addHabit(_: any, { habit }: AddHabitParams) {
             try { 
-                const newHabit = await Habit.create({
+                const newHabit = await HabitSchema.create({
                     ...habit
                 });
                 return newHabit;
