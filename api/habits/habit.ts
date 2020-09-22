@@ -1,7 +1,7 @@
 // Database collection
 import mongoose, { Schema } from 'mongoose'
 
-const eventSchema: mongoose.SchemaType = new Schema({
+const eventSchema = new Schema({
     date: {
         type: Date,
         required: true,
@@ -9,7 +9,7 @@ const eventSchema: mongoose.SchemaType = new Schema({
     }
 });
 
-export const habitSchema: mongoose.SchemaType = new Schema({
+export const habitSchema = new Schema({
     name: {
         type: String,
         required: true,

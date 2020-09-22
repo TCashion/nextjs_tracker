@@ -1,3 +1,4 @@
+import { Schema } from 'mongoose';
 import { ReactNode } from 'react'
 
 export interface NavLink {
@@ -16,11 +17,26 @@ export interface ChildrenProps {
 };
 
 export interface IHabit {
-    _id: string,
+    _id: Schema.Types.ObjectId,
     name: string,
     events?: Date[]
 }
 
-export interface AddHabitParams {
+export interface IEvent {
+    _id: Schema.Types.ObjectId,
+    date: Date
+}
+
+export interface IAddHabitParams {
     habit: IHabit
+}
+
+export interface IAddEventParams {
+    habitId: Schema.Types.ObjectId,
+    date: Date
+}
+
+export interface IRemoveEventParams {
+    habitId: Schema.Types.ObjectId,
+    eventId: Schema.Types.ObjectId
 }

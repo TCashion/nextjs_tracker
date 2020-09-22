@@ -1,12 +1,17 @@
 import Habit from './habit'
-import { AddHabitParams, IHabit } from '../../@types/interfaces'
+import { 
+    IAddHabitParams, 
+    IHabit, 
+    IRemoveEventParams, 
+    IAddEventParams 
+} from '../../@types/interfaces'
 
 // graphQL mutations are where we "modify" things
 // like a POST request in a REST API
 
 export const habitMutations = {
     Mutation: {
-        async addHabit(_: any, { habit }: AddHabitParams) {
+        async addHabit(_: any, { habit }: IAddHabitParams) {
             try { 
                 const newHabit: IHabit = await Habit.create({
                     ...habit
@@ -15,6 +20,15 @@ export const habitMutations = {
             } catch (err) {
                 console.log(err);
             };
+        }, 
+
+        async addEvent(_: any, { habitId, date }: IAddEventParams) {
+            console.log('addEvent');
+        },
+
+        async removeEvent(_: any, { habitId, eventId }: IRemoveEventParams) {
+            console.log('removeEvent');
         }
+        
     }
 };
