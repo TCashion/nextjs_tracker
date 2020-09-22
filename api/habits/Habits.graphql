@@ -2,9 +2,19 @@
 # type defines the shape of the data that is available to the API
 # doesn't necessarily need to be exact match to model / data in DB
 # i.e. data that comes from the API
+
+# custom date type definition (GraphQL doesnt have date type)
+scalar Date
+
 type Habit {
-    _id: ID!,
+    _id: ID!
     name: String!
+    events: [Event]
+}
+
+type Event {
+    _id: ID!
+    date: Date
 }
 
 # defines what comes into the API
@@ -16,6 +26,8 @@ input HabitInput {
 # define what we can change
 type Mutation {
     addHabit(habit: HabitInput): Habit
+    addEvent(habitId: ID, date: Date): Habit
+    removeEvent(habitId: ID, eventID: ID): Habit
 }
 
 type Query {

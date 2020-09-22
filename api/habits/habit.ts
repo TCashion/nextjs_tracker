@@ -1,11 +1,20 @@
 // Database collection
-import mongoose, { Schema } from 'mongoose';
+import mongoose, { Schema } from 'mongoose'
 
-export const habitSchema = new Schema({
+const eventSchema: mongoose.SchemaType = new Schema({
+    date: {
+        type: Date,
+        required: true,
+        unique: true
+    }
+});
+
+export const habitSchema: mongoose.SchemaType = new Schema({
     name: {
         type: String,
-        required: true
-    }
+        required: true,
+    },
+    events: [eventSchema]
 });
 
 export default mongoose.models.Habit || mongoose.model('Habit', habitSchema);

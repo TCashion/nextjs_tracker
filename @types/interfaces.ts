@@ -17,7 +17,8 @@ export interface ChildrenProps {
 
 export interface IHabit {
     _id: string,
-    name: string
+    name: string,
+    events?: Date[]
 }
 
 export interface AddHabitParams {
