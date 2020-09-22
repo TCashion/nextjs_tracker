@@ -1,20 +1,23 @@
-import HabitButton from './habitButton';
-import Card from './card';
+import HabitButton from './habitButton'
+import Card from './card'
+import { IHabit } from '../@types/interfaces'
 
-interface Props {
-    habit: string
+interface IProps {
+    habit: IHabit
 }
 
-const HabitCard = ({ habit }: Props) => {
+const HabitCard = ({ habit }: IProps) => {
     const dates = getLastSevenDays();
     return (
-        <Card title={habit}>
+        <Card title={habit.name}>
             <div>
                 {dates.map((date, idx) => {
                     return (
                         <HabitButton 
                             date={date}
                             key={`${date.getDate()}-${idx}`}
+                            habitId={habit._id}
+                            events={habit.events}
                         />
                     )
                 })}

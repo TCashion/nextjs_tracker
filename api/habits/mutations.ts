@@ -23,7 +23,7 @@ export const habitMutations = {
         }, 
 
         async addEvent(_: any, { habitId, date }: IAddEventParams) {
-            console.log('addEvent');
+            console.log(`addEvent for ${habitId} on ${date}`);
         },
 
         async removeEvent(_: any, { habitId, eventId }: IRemoveEventParams) {

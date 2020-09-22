@@ -12,6 +12,10 @@ const GET_HABITS = gql`
         habits {
             _id,
             name
+            events {
+                _id
+                date
+            }
         }
     }
 `
@@ -25,6 +29,8 @@ const Habits = () => {
             }
         }
     });
+
+    if (error) console.log(error);
 
     return (
         <Layout>

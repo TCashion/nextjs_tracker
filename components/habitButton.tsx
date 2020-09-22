@@ -1,8 +1,11 @@
 import { useMutation } from '@apollo/react-hooks'
+import { Schema } from 'mongoose'
 import gql from 'graphql-tag'
 
 interface IProps {
-    date: Date
+    date: Date,
+    habitId: Schema.Types.ObjectId, 
+    events?: Date[]
 }
 
 const ADD_EVENT = gql`
@@ -31,20 +34,50 @@ const REMOVE_EVENT = gql`
     }
 `
 
-const HabitButton = ({ date }: IProps) => {
+const HabitButton = ({ date, habitId }: IProps) => {
+    const [addEvent] = useMutation(ADD_EVENT, {
+        refetchQueries: ['getHabits']
+    });
 
-    const handleClick = () => console.log('hi')
+    const [removeEvent] = useMutation(REMOVE_EVENT, {
+        refetchQueries: ['getHabits']
+    });
+
+    const found = false;
 
     return (
         <div className="inline-flex flex-col text-center">
             <span>{date.getMonth() + 1}/{date.getDate()}</span>
-            <button
-                className="bg-white hover:bg-gray-100 text-gray-800 font-semibold py-2 px-4 border border-gray-400 rounded shadow m-3"
-                onClick={handleClick}
-            >
-                'O'
-            </button>
-        </div>
+            {found ?
+                (
+                    <button
+                        className="bg-white hover:bg-gray-100 text-gray-800 font-semibold py-2 px-4 border border-gray-400 rounded shadow m-3"
+                        onClick={() => removeEvent({
+                            variables: {
+                                habitId, 
+                                eventId: 'fake string ID'
+                            }
+                        })}
+                    >
+                        X
+                    </button>
+                )
+                :
+                (
+                    <button
+                        className="bg-white hover:bg-gray-100 text-gray-800 font-semibold py-2 px-4 border border-gray-400 rounded shadow m-3"
+                        onClick={() => addEvent({
+                            variables: {
+                                habitId,
+                                date
+                            }
+                        })}
+                    >
+                        O
+                    </button>
+                )
+            }
+        </div >
     );
 };
 

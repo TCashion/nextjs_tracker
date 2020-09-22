@@ -12,7 +12,7 @@ const HabitList = ({ habits }: Props) => {
             {habits.map((habit) => {
                 return <HabitCard
                     key={`${habit._id}`} 
-                    habit={habit.name}
+                    habit={habit}
                 />
             })}
         </section>
