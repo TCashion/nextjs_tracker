@@ -6,12 +6,12 @@ import { IHabit } from '../../@types/interfaces';
 export const habitResolvers = {
     Query: {
         async habits() {
-            console.log('get habits');
-            const habit: IHabit = {
-                _id: 'somefunkyarray',
-                name: 'Make my bed'
-            };
-            return [habit];
+            try {
+                const habits = await Habit.find();
+                return habits;
+            } catch (err) {
+                console.log(err);
+            }
         }
     }
 };

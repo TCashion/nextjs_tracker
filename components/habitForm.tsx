@@ -19,7 +19,10 @@ const ADD_HABIT = gql`
 const HabitForm = () => {
     const [formData, setFormData] = useState({ habit: '' });
 
-    const [addHabit] = useMutation(ADD_HABIT);
+    const [addHabit] = useMutation(ADD_HABIT, {
+        // this option will re-fetch data after addHabit is complete
+        refetchQueries: ['getHabits']
+    });
     
     const handleCancel = (e: MouseEvent<HTMLButtonElement>): void => {
         e.preventDefault(); 
