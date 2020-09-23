@@ -8,7 +8,7 @@ import {
     HttpLink,
 } from '@apollo/client'
 
-export function withApollo (PageComponent: any) {
+export function withApollo(PageComponent: any) {
     const WithApollo = ({ apolloClient, apolloState, ...pageProps }: any) => {
 
         const client: any = apolloClient || initApolloClient();
@@ -26,7 +26,7 @@ export function withApollo (PageComponent: any) {
     WithApollo.getInitialProps = async (ctx: any) => {
         // this is the entire tree of our application
         const { AppTree } = ctx;
-        const apolloClient = ( ctx.apolloClient = initApolloClient() );
+        const apolloClient = (ctx.apolloClient = initApolloClient());
 
         let pageProps = {};
         if (PageComponent.getInitialProps) {
@@ -35,7 +35,7 @@ export function withApollo (PageComponent: any) {
 
         // if query is on the server
         if (typeof window === 'undefined') {
-            if ( ctx.res && ctx.res.finished ) {
+            if (ctx.res && ctx.res.finished) {
                 return pageProps;
             }
 
@@ -45,7 +45,7 @@ export function withApollo (PageComponent: any) {
                 await getDataFromTree(
                     // this instructs to render the whole tree, but only after
                     // adding the apollo data to the tree
-                    <AppTree 
+                    <AppTree
                         pageProps={{
                             ...pageProps,
                             apolloClient
@@ -57,12 +57,12 @@ export function withApollo (PageComponent: any) {
             }
 
             // manually clears a Head sideffect 
-            Head.rewind(); 
+            Head.rewind();
         }
-        
+
         const apolloState = apolloClient.cache.extract();
         return {
-            ... pageProps,
+            ...pageProps,
             apolloState
         }
     };
@@ -71,10 +71,15 @@ export function withApollo (PageComponent: any) {
     return WithApollo;
 };
 
+const isDev = process.env.NODE_ENV !== 'production';
+const url = isDev
+    ? 'http://localhost:3000'
+    : ''; // second part will be site's actual URL
+
 const initApolloClient = (initialState: NormalizedCacheObject = {}) => {
-    const cache = new InMemoryCache().restore(initialState); 
+    const cache = new InMemoryCache().restore(initialState);
     const link = new HttpLink({
-        uri: 'http://localhost:3000/api/graphql', // for setup confirmation
+        uri: `${url}/api/graphql`, // for setup confirmation
         // uri: 'https://www.graphqlhub.com/graphql', // for testing third party APIs
         fetch
     });

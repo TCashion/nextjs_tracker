@@ -27,7 +27,7 @@ input HabitInput {
 type Mutation {
     addHabit(habit: HabitInput): Habit
     addEvent(habitId: ID, date: Date): Habit
-    removeEvent(habitId: ID, eventID: ID): Habit
+    removeEvent(habitId: ID, eventId: ID): Habit
 }
 
 type Query {

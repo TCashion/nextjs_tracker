@@ -1,11 +1,13 @@
 import { useMutation } from '@apollo/react-hooks'
 import { Schema } from 'mongoose'
 import gql from 'graphql-tag'
+import { IEvent } from '../@types/interfaces'
+
 
 interface IProps {
     date: Date,
     habitId: Schema.Types.ObjectId, 
-    events?: Date[]
+    events?: IEvent[]
 }
 
 const ADD_EVENT = gql`
@@ -34,7 +36,7 @@ const REMOVE_EVENT = gql`
     }
 `
 
-const HabitButton = ({ date, habitId }: IProps) => {
+const HabitButton = ({ date, habitId, events }: IProps) => {
     const [addEvent] = useMutation(ADD_EVENT, {
         refetchQueries: ['getHabits']
     });
@@ -43,19 +45,22 @@ const HabitButton = ({ date, habitId }: IProps) => {
         refetchQueries: ['getHabits']
     });
 
-    const found = false;
+    const foundDate = events ? events.find((event) => {
+        const eventDate = new Date(event.date);
+        return eventDate.getDate() === date.getDate();
+    }) : false;
 
     return (
         <div className="inline-flex flex-col text-center">
             <span>{date.getMonth() + 1}/{date.getDate()}</span>
-            {found ?
+            {foundDate ?
                 (
                     <button
                         className="bg-white hover:bg-gray-100 text-gray-800 font-semibold py-2 px-4 border border-gray-400 rounded shadow m-3"
                         onClick={() => removeEvent({
                             variables: {
                                 habitId, 
-                                eventId: 'fake string ID'
+                                eventId: foundDate._id
                             }
                         })}
                     >

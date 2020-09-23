@@ -1,9 +1,9 @@
 import Habit from './habit'
-import { 
-    IAddHabitParams, 
-    IHabit, 
-    IRemoveEventParams, 
-    IAddEventParams 
+import {
+    IAddHabitParams,
+    IHabit,
+    IRemoveEventParams,
+    IAddEventParams
 } from '../../@types/interfaces'
 
 // graphQL mutations are where we "modify" things
@@ -12,7 +12,7 @@ import {
 export const habitMutations = {
     Mutation: {
         async addHabit(_: any, { habit }: IAddHabitParams) {
-            try { 
+            try {
                 const newHabit: IHabit = await Habit.create({
                     ...habit
                 });
@@ -20,15 +20,49 @@ export const habitMutations = {
             } catch (err) {
                 console.log(err);
             };
-        }, 
+        },
 
         async addEvent(_: any, { habitId, date }: IAddEventParams) {
-            console.log(`addEvent for ${habitId} on ${date}`);
+            try {
+                date.setHours(0, 0, 0, 0);
+                const habit = await Habit.findOneAndUpdate(
+                    {
+                        _id: habitId,
+                        'events.date': {
+                            $ne: date
+                        }
+                    },
+                    {
+                        $addToSet: {
+                            events: {
+                                date
+                            }
+                        }
+                    }
+                );
+                return habit;
+            } catch (err) {
+                console.log(err);
+            }
         },
 
         async removeEvent(_: any, { habitId, eventId }: IRemoveEventParams) {
-            console.log('removeEvent');
+            try { 
+                const habit = await Habit.findOneAndUpdate({
+                    _id: habitId
+                }, 
+                {
+                    $pull: {
+                        events: {
+                            _id: eventId
+                        }
+                    }
+                });
+                return habit; 
+            } catch (err) {
+                console.log(err);
+            }
         }
-        
+
     }
 };
