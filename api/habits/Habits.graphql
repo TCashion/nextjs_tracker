@@ -17,7 +17,7 @@ type Event {
     date: Date
 }
 
-# defines what comes into the API
+# defines what comes into the API`
 input HabitInput {
     _id: ID
     name: String!

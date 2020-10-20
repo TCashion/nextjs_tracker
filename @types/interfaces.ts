@@ -1,4 +1,4 @@
-import { Schema } from 'mongoose';
+import { Schema } from 'mongoose'
 import { ReactNode } from 'react'
 
 export interface NavLink {
